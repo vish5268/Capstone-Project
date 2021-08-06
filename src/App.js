@@ -1,10 +1,30 @@
 import "./styles.css";
+import React from "react";
 
-export default function App() {
+// Importing component
+import Header from "./components/Header";
+
+// Importing pages
+import Photos from "./pages/Photos";
+import Cart from "./pages/Cart";
+
+// Importing Router components
+import { Switch, Route } from "react-router-dom";
+
+const App = () => {
   return (
-    <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
+    <div>
+      <Header />
+      <Switch>
+        <Route exact path="/">
+          <Photos />
+        </Route>
+        <Route path="/cart">
+          <Cart />
+        </Route>
+      </Switch>
     </div>
   );
-}
+};
+
+export default App;
