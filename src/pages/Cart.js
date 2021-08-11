@@ -12,9 +12,9 @@ const Cart = () => {
     currency: "USD"
   });
 
-  const cartItemElements = cartItems.map((item) => {
-    <Cartitem key={item.id} item={item} />;
-  });
+  const cartItemElements = cartItems.map((item) => (
+    <Cartitem key={item.id} item={item} />
+  ));
 
   const placeOrder = () => {
     setButtonText("Ordering...");
@@ -27,12 +27,15 @@ const Cart = () => {
   return (
     <main className="cart-page">
       <h1>Cart Item</h1>
+      {cartItemElements}
+      <p className="total-cost">Total:{totalCostDisplay} </p>
+
       {cartItems.length > 0 ? (
         <div className="order-button">
           <button onClick={placeOrder}>{buttonText}</button>
         </div>
       ) : (
-        <p>You have zero items in the cart.</p>
+        <p>You have zero items in your cart.</p>
       )}
     </main>
   );

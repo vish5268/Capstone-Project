@@ -1,6 +1,7 @@
-import React, { useState, useContext } from "react";
+import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import { Context } from "../Context";
+// import useHover from "../hooks/useHover";
 
 const Cartitem = ({ item }) => {
   const [hovered, setHovered] = useState(false);
@@ -13,17 +14,17 @@ const Cartitem = ({ item }) => {
     <div className="cart-item">
       <i
         className={iconClassName}
-        onClick={() => removeFromCart}
+        onClick={() => removeFromCart(item.id)}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       ></i>
-      <img src="item.url" width="130px" alt="/" />
+      <img src={item.url} width="130px" alt="/" />
       <p>$5.99</p>
     </div>
   );
 };
 
-Cartitem.prototype = {
+Cartitem.propTypes = {
   item: PropTypes.shape({
     url: PropTypes.string.isRequired
   })
